@@ -1,5 +1,6 @@
 const colors = require("tailwindcss/colors");
 const defaultTheme = require("tailwindcss/defaultTheme");
+const { addDynamicIconSelectors } = require("@iconify/tailwind");
 
 module.exports = {
     darkMode: "class",
@@ -69,7 +70,7 @@ module.exports = {
                 },
             },
             fontFamily: {
-                sans: ['"Cairo Variable"', ...defaultTheme.fontFamily.sans],
+                sans: ["IBM Plex Sans Arabic", ...defaultTheme.fontFamily.sans],
             },
             borderColor: {
                 DEFAULT: "transparent",
@@ -107,6 +108,7 @@ module.exports = {
     },
 
     plugins: [
+        addDynamicIconSelectors(),
         require("@tailwindcss/forms"),
         require("@tailwindcss/typography"),
         require("tailwind-scrollbar-hide"),

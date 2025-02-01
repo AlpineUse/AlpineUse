@@ -78,16 +78,16 @@
     <!-- x-use-theme -->
     <script>
         if (localStorage.getItem("useTheme") == undefined) {
-            localStorage.setItem("useTheme", 'system');
+            localStorage.setItem("useTheme", 'auto');
         }
         if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-            if (localStorage.getItem("useTheme") == "system" || localStorage.getItem("useTheme") == "dark") {
+            if (localStorage.getItem("useTheme") == "auto" || localStorage.getItem("useTheme") == "dark") {
                 document.documentElement.classList.add("dark");
             } else {
                 document.documentElement.classList.add("light");
             }
         } else {
-            if (localStorage.getItem("useTheme") == "system" || localStorage.getItem("useTheme") == "light") {
+            if (localStorage.getItem("useTheme") == "auto" || localStorage.getItem("useTheme") == "light") {
                 document.documentElement.classList.add("light");
             } else {
                 document.documentElement.classList.add("dark");
@@ -104,7 +104,7 @@
         
                         const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
                         mediaQuery.addEventListener('change', (e) => { 
-                            if(useTheme === 'system'){ 
+                            if(useTheme === 'auto'){ 
                                 document.documentElement.classList.toggle('dark', e.matches); 
                                 } 
                             }
@@ -112,14 +112,14 @@
                         `
                 );
                 el.setAttribute("x-bind:class",
-                    `{ dark: useTheme === 'dark' || (useTheme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches) }`
+                    `{ dark: useTheme === 'dark' || (useTheme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) }`
                     );
             });
         });
     </script>
     <!-- x-use-theme -->
 
-    <!-- x-use-hideScrollBar -->
+    {{-- <!-- x-use-hideScrollBar -->
     <script>
         document.addEventListener("alpine:init", () => {
             const styleUseHideScrollbar = document.createElement("style");
@@ -149,9 +149,9 @@
             });
         });
     </script>
-    <!-- x-use-hideScrollBar -->
+    <!-- x-use-hideScrollBar --> --}}
 
-    <!-- x-use-protectrightclick -->
+    {{-- <!-- x-use-protectrightclick -->
     <script>
         document.addEventListener("StartAlpineUse", () => {
             document.querySelectorAll("[x-use-protectrightclick]").forEach((el) => {
@@ -167,7 +167,7 @@
             });
         });
     </script>
-    <!-- x-use-protectrightclick -->
+    <!-- x-use-protectrightclick --> --}}
 
     <!-- x-use-longpress -->
     <script>
@@ -394,7 +394,7 @@
     <!-- x-use-share -->
 
     <!-- x-use-splash -->
-    <script>
+    {{-- <script>
         document.addEventListener("StartAlpineUse", () => {
 
             const styleUseSplash = document.createElement("style");
@@ -451,7 +451,7 @@
                 });
             });
         });
-    </script>
+    </script> --}}
     <!-- x-use-splash -->
 
     <!-- Archive -->

@@ -1,8 +1,13 @@
-<p align="center"><a href="https://alpineuse.org/" target="_blank"><img src="https://alpineuse.org/assets/images/icons/icon.webp" width="200" alt="AlpineUse"></a></p>
+<p align="center">
+    <a href="https://alpineuse.org/" target="_blank">
+        <img src="https://alpineuse.org/assets/images/icons/icon.webp" width="200" alt="AlpineUse">
+    </a>
+</p>
 
 ## About AlpineUse
 
 Soon
+
 <!-- Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
@@ -25,11 +30,13 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 
 ## Contributing
 
-Thank you for considering contributing to the AlpineUse, The contribution guide can be found in the [AlpineUse Documentation](https://alpineuse.org/docs/contributions).
+Thank you for considering contributing to the AlpineUse.
+The contribution guide can be found in the [AlpineUse Documentation](https://alpineuse.org/docs/contributions).
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within AlpineUse, please send an e-mail via [repo@alpineuse.org](mailto:repo@alpineuse.org). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within AlpineUse, please send an e-mail via [repo@alpineuse.org](mailto:repo@alpineuse.org).
+All security vulnerabilities will be promptly addressed.
 
 ## License
 
