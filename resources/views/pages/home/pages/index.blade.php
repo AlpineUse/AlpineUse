@@ -17,9 +17,9 @@
             </h1>
         </div>
         <div class="flex flex-row justify-center w-full max-w-sm gap-4 my-12">
-            <x-elements.button class="w-full rounded-lg" size="sm" primary>Get
-                Started</x-elements.button>
-
+            <a href="/about" class="w-full"><x-elements.button class="w-full rounded-lg" size="sm" primary>Get
+                    Started</x-elements.button>
+            </a>
             <x-elements.button class="w-full rounded-lg" size="sm" secondary>Learn More</x-elements.button>
         </div>
     </div>

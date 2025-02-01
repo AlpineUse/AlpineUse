@@ -14,7 +14,7 @@
             <!-- Navbar -->
             <div class="inline-flex flex-row items-center justify-center gap-x-2">
                 <div class="relative z-30 rounded-lg cursor-pointer">
-                    <a href="https://github.com/iammarjamal" rel="noreferrer" target="_blank" class="text-gray-900 hover:opacity-75">
+                    <a href="https://github.com/AlpineUse/AlpineUse" rel="noreferrer" target="_blank" class="text-gray-900 hover:opacity-75">
                         <span class="sr-only"> GitHub </span>
                         <svg aria-hidden="true" class="size-7 fill-zinc-950 dark:fill-zinc-50" fill="currentColor" viewBox="0 0 24 24">
                             <path
