@@ -1,0 +1,109 @@
+# PHPUnit and related files
+/.phpunit.cache
+/phpunit.result.cache
+/phpactor.json
+
+# Laravel, Composer, and Vendor
+/composer.lock
+/vendor
+/.env
+/.env.backup
+/.env.production
+Homestead.json
+Homestead.yaml
+auth.json
+/phpunit.xml
+/phpstan.neon
+testbench.yaml
+
+# Build and public assets
+/public/build
+/public/hot
+/public/storage
+/build
+
+# Storage files
+/storage/*.key
+/storage/pail
+
+# Logs
+npm-debug.log
+yarn-error.log
+
+# IDE and Editor files
+/.idea
+/.fleet
+/.nova
+/.vscode
+/.zed
+
+# Composer related files
+composer.lock
+/vendor
+
+# Node.js modules
+/node_modules
+
+# Caches and compiled files
+.phpunit.cache
+.phpunit.result.cache
+/build
+
+# IDE Helper
+_ide_helper.php
+_ide_helper_models.php
+.phpstorm.meta.php
+
+# Editors configurations
+/.idea
+/.fleet
+/.vscode
+
+# Miscellaneous files
+phpunit.xml
+phpstan.neon
+testbench.yaml
+/docs
+/coverage
+
+# macOS and system files
+.DS_Store
+.AppleDouble
+.LSOverride
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Files and Folders created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Files with special characters
+Icon^M^M
+._*
+
+# Third-party application files
+.nova
+.vscode
+node_modules
+
+# Xcode user files
+build/*
+*~.nib
+*.swp
+*.mode1
+*.mode1v3
+*.mode2v3
+*.perspective
+*.perspectivev3
+*.pbxuser
+*.xcworkspace
+xcuserdata
+.env.example
