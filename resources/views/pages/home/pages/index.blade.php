@@ -12,7 +12,7 @@
         </div>
         <div class="max-w-3xl mx-auto text-center">
             <h1
-                class="bg-gradient-to-r from-[#2d3441] via-[#7db1bd] to-[#455574] dark:from-[#96e2f4] dark:via-[#7ec7da] dark:to-[#96e2f4] bg-clip-text text-2xl font-extrabold text-transparent sm:text-4xl">
+                class="bg-gradient-to-r font-bold from-[#2d3441] via-[#7db1bd] to-[#455574] dark:from-[#96e2f4] dark:via-[#7ec7da] dark:to-[#96e2f4] bg-clip-text text-2xl text-transparent sm:text-4xl">
                 Collection of Alpine.js <br /><span class=""> Extending Directives </span>
             </h1>
         </div>

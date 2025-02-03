@@ -1,6 +1,5 @@
 const colors = require("tailwindcss/colors");
 const defaultTheme = require("tailwindcss/defaultTheme");
-const { addDynamicIconSelectors } = require("@iconify/tailwind");
 
 module.exports = {
     darkMode: "class",
@@ -108,7 +107,6 @@ module.exports = {
     },
 
     plugins: [
-        addDynamicIconSelectors(),
         require("@tailwindcss/forms"),
         require("@tailwindcss/typography"),
         require("tailwind-scrollbar-hide"),

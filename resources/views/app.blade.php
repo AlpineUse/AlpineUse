@@ -53,6 +53,9 @@
     <!-- Assets -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @laravelPWA
+    
+    @livewireStyles
+    @livewireScripts
     <!-- Assets -->
 
     <!-- AlpineUse -->
@@ -508,7 +511,7 @@
     <!-- AlpineUse -->
 </head>
 
-<body class="transition-all duration-500 bg-light dark:bg-dark">
+<body class="transition-all duration-750 bg-light dark:bg-dark">
     @if (!empty($title))
         @yield('slot')
     @else
