@@ -6,7 +6,7 @@
 
 ## About AlpineUse
 
-Soon
+AlpineUse is a comprehensive collection of Alpine.js directives designed to enhance your web development projects. By integrating these directives, you can seamlessly add advanced functionalities to your HTML elements without the need for extensive JavaScript coding. This resource empowers developers to create dynamic and interactive user interfaces efficiently.
 
 <!-- Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
