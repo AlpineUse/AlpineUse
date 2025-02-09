@@ -13,14 +13,16 @@
         <div class="max-w-3xl mx-auto text-center">
             <h1
                 class="bg-gradient-to-r font-bold from-[#2d3441] via-[#7db1bd] to-[#455574] dark:from-[#96e2f4] dark:via-[#7ec7da] dark:to-[#96e2f4] bg-clip-text text-2xl text-transparent sm:text-4xl">
-                Collection of Alpine.js <br /><span class=""> Extending Directives </span>
+                Collection of Alpine.js <br /><span class=""> Extending Plugins </span>
             </h1>
         </div>
         <div class="flex flex-row justify-center w-full max-w-sm gap-4 my-12">
-            <a href="/about" class="w-full"><x-elements.button class="w-full rounded-lg" size="sm" primary>Get
-                    Started</x-elements.button>
+            <a href="{{ route('home.plugins.index') }}" class="w-full">
+                <x-elements.button class="w-full rounded-lg" size="sm" primary>Get Started</x-elements.button>
             </a>
-            <x-elements.button class="w-full rounded-lg" size="sm" secondary>Learn More</x-elements.button>
+            <a href="{{ route('home.docs.index') }}" class="w-full">
+                <x-elements.button class="w-full rounded-lg" size="sm" secondary>Learn More</x-elements.button>
+            </a>
         </div>
     </div>
 </div>

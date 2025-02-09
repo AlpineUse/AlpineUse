@@ -62,6 +62,7 @@
     
     <!-- x-alpineuse -->
     <script>
+        
         const StartAlpineUse = new Event('StartAlpineUse');
         setTimeout(() => {
             document.dispatchEvent(StartAlpineUse);
