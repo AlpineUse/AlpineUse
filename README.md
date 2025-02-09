@@ -6,7 +6,7 @@
 
 ## About AlpineUse
 
-Soon
+AlpineUse is a comprehensive collection of Alpine.js plugins designed to enhance your web development projects. By integrating these plugins, you can seamlessly add advanced functionalities to your HTML elements without the need for extensive JavaScript coding. This resource empowers developers to create dynamic and interactive user interfaces efficiently.
 
 <!-- Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
@@ -31,7 +31,7 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 ## Contributing
 
 Thank you for considering contributing to the AlpineUse.
-The contribution guide can be found in the [AlpineUse Documentation](https://alpineuse.org/docs/contributions).
+The contribution guide can be found in the [AlpineUse Documentation](https://alpineuse.org/docs#Contribution).
 
 ## Security Vulnerabilities
 
