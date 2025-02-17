@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html class="scroll-smooth" x-alpineuse x-use-theme>
+
 <head>
     <!-- Base Meta -->
     @if (!empty($title))
@@ -53,16 +54,22 @@
     <!-- Assets -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @laravelPWA
-    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     @livewireStyles
     @livewireScripts
     <!-- Assets -->
 
     <!-- AlpineUse -->
-    
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/nprogress@0.2.0/nprogress.css">
+
+    <!-- JavaScript -->
+    <script src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
+
     <!-- x-alpineuse -->
     <script>
-        
         const StartAlpineUse = new Event('StartAlpineUse');
         setTimeout(() => {
             document.dispatchEvent(StartAlpineUse);
@@ -75,6 +82,20 @@
             });
 
             console.log('StartAlpineUse Event, time is', Date.now());
+        });
+
+        NProgress.configure({ showSpinner: false });
+
+        document.addEventListener("livewire:navigate", function() {
+            NProgress.start();
+        });
+
+        document.addEventListener('livewire:navigating', () => {
+            NProgress.inc();
+        })
+
+        document.addEventListener("livewire:navigated", function() {
+            setTimeout(() => NProgress.done(), 100);
         });
     </script>
     <!-- x-alpineuse -->
@@ -117,7 +138,7 @@
                 );
                 el.setAttribute("x-bind:class",
                     `{ dark: useTheme === 'dark' || (useTheme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) }`
-                    );
+                );
             });
         });
     </script>
@@ -512,7 +533,7 @@
     <!-- AlpineUse -->
 </head>
 
-<body class="transition-all duration-750 bg-light dark:bg-dark">
+<body class="transition duration-500 ease-out bg-light dark:bg-dark">
     @if (!empty($title))
         @yield('slot')
     @else

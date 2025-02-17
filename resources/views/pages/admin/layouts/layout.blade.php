@@ -8,7 +8,7 @@
             <!-- Header -->
 
             <!-- Body -->
-            <div class="w-full h-full p-6 mx-2 mt-1">
+            <div class="w-full h-full mx-2 mt-1 animate__animated animate__fadeIn animate__faster xs:p-2 md:p-6">
                 {{ $slot }}
             </div>
             <!-- Body -->

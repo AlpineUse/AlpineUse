@@ -17,10 +17,10 @@
             </h1>
         </div>
         <div class="flex flex-row justify-center w-full max-w-sm gap-4 my-12">
-            <a href="{{ route('home.plugins.index') }}" class="w-full">
+            <a href="{{ route('home.plugins.index') }}" class="w-full" wire:navigate>
                 <x-elements.button class="w-full rounded-lg" size="sm" primary>Get Started</x-elements.button>
             </a>
-            <a href="{{ route('home.docs.index') }}" class="w-full">
+            <a href="{{ route('home.docs.index', ['url' => 'introduction']) }}" class="w-full" wire:navigate>
                 <x-elements.button class="w-full rounded-lg" size="sm" secondary>Learn More</x-elements.button>
             </a>
         </div>

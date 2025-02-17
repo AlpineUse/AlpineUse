@@ -14,7 +14,7 @@
                 </a>
             </div>
 
-            <div class="mt-2 mb-0">
+            <div class="mt-2 mb-0 animate__animated animate__fadeIn animate__fast">
                 {{ $slot }}
             </div>
         </div>

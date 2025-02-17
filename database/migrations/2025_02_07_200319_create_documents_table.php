@@ -13,9 +13,15 @@ return new class extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
+            $table->enum('type', ['general', 'plugin'])->default('general');
             $table->foreignId('plugin_id')->nullable();
-            $table->string('title');
-            $table->longText('text');
+
+            $table->string('title')->nullable();
+            $table->longText('body')->nullable();
+            $table->longText('url')->nullable();
+
+            $table->enum('status', ['active', 'non-active'])->default('non-active');
+            
             $table->timestamps();
         });
     }
