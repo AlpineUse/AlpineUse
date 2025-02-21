@@ -20,7 +20,7 @@
                                 <iconify-icon icon="mdi:github" class="text-3xl text-dark dark:text-light"></iconify-icon>
                             </a>
                         </li>
-                        @if (Auth::Check())
+                        {{-- @if (Auth::Check())
                             <li>
                                 <a href="{{ route('dashboard.index') }}" wire:navigate>
                                     <iconify-icon icon="material-symbols:dashboard"
@@ -34,7 +34,7 @@
                                         class="text-3xl text-dark dark:text-light"></iconify-icon>
                                 </a>
                             </li>
-                        @endif
+                        @endif --}}
                     </ul>
                 </div>
             </div>

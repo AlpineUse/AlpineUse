@@ -13,36 +13,47 @@
     <!-- Body -->
     <div class="flex gap-2 mt-3 -m-1 s:flex-col sm:flex-col md:flex-row lg:flex-row xl:flex-row">
 
-        <div
-            class="rounded-lg overflow-hidden border border-neutral-200/60 bg-white text-neutral-700 shadow-sm w-[380px]">
-            <div class="relative">
-                <img src="" class="w-full h-auto" />
-            </div>
-            <div class="p-7">
-                <div class="flex justify-between w-full flex-fol">
-                    <h2 class="mb-2 text-lg font-bold leading-none tracking-tight">Product Name</h2>
-                    <div class="inline-flex items-center justify-center mb-2">
-                        <span
-                            class="hidden bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Badge</span>
-                        <span
-                            class="hidden bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Badge</span>
-                        <span
-                            class="bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Not Active</span>
+        @foreach ($plugins as $plugin)
+            <div
+                class="rounded-lg overflow-hidden border border-neutral-200/60 bg-white text-neutral-700 shadow-sm w-[380px] h-auto">
+                <div class="flex flex-col p-7">
+                    <div class="flex justify-between w-full flex-fol">
+                        <h2 class="mb-2 text-lg font-bold leading-none tracking-tight">{{ $plugin->name }}</h2>
+
+
+                        <div class="inline-flex items-center justify-center mb-2">
+                            {{-- @if ($plugin->status == 'active')
+                                <span
+                                    class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Badge</span>
+                                <span
+                                    class="bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Not
+                                    Active</span>
+                            @else
+                                <span
+                                    class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Badge</span>
+                            @endif --}}
+                        </div>
+                    </div>
+
+                    <p class="h-16 mt-2 mb-5 text-neutral-500">
+                        {{ $plugin->desc }}
+                    </p>
+                    
+                    <div class="bottom-0 flex flex-row items-end justify-end w-full max-w-sm gap-4 mt-12">
+                        <a href="{{ route('dashboard.plugins.view', ['id' => $plugin->id]) }}" class="w-full" wire:navigate>
+                            <x-elements.button class="w-full rounded-lg" size="sm" primary>Edit Plugin</x-elements.button>
+                        </a>
+                    </div>
+                    <div class="flex flex-col items-center justify-center w-full mt-2">
+                        <a class="cursor-pointer text-danger-light dark:text-danger-dark" wire:confirm="are you sure to delete this plugin ?" wire:click="delete({{ $plugin->id }})">Delete Plugin</a>
                     </div>
                 </div>
-
-                <p class="mt-2 mb-5 text-neutral-500">This card element can be used to display a product, post, or any other
-                    type of data.</p>
-                <button
-                    class="inline-flex items-center justify-center w-full h-10 px-4 py-2 text-sm font-medium text-white transition-colors rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none bg-neutral-950 hover:bg-neutral-950/90">
-                    View
-                </button>
             </div>
-        </div>
+        @endforeach
 
         <div
-            class="rounded-lg overflow-hidden border border-neutral-200/60 bg-white text-neutral-700 shadow-sm w-[380px]">
-            <a class="w-full h-full" href="#" wire:navigate>
+            class="rounded-lg overflow-hidden border border-neutral-200/60 bg-white text-neutral-700 shadow-sm w-[380px] h-64">
+            <a class="w-full h-full" wire:click="create">
                 <div class="flex flex-col items-center justify-center h-full">
                     <iconify-icon icon="ic:round-plus" class="text-dark dark:text-light text-9xl"></iconify-icon>
                 </div>

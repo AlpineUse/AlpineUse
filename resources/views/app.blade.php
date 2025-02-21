@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" x-alpineuse x-use-theme>
+<html class="scroll-smooth" x-use-theme>
 
 <head>
     <!-- Base Meta -->
@@ -54,54 +54,19 @@
     <!-- Assets -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @laravelPWA
+    
+    <!-- تحميل السكريبت مسبقاً -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/x-use-theme@1.0.9/index.min.js" as="script">
+    <script src="https://cdn.jsdelivr.net/npm/x-use-theme@1.0.9/index.min.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     @livewireStyles
+
     @livewireScripts
     <!-- Assets -->
 
-    <!-- AlpineUse -->
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/nprogress@0.2.0/nprogress.css">
-
-    <!-- JavaScript -->
-    <script src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
-
-    <!-- x-alpineuse -->
-    <script>
-        const StartAlpineUse = new Event('StartAlpineUse');
-        setTimeout(() => {
-            document.dispatchEvent(StartAlpineUse);
-        }, 0);
-
-        document.addEventListener('StartAlpineUse', () => {
-
-            document.querySelectorAll('[x-alpineuse]').forEach(el => {
-                el.setAttribute("x-data", '');
-            });
-
-            console.log('StartAlpineUse Event, time is', Date.now());
-        });
-
-        NProgress.configure({ showSpinner: false });
-
-        document.addEventListener("livewire:navigate", function() {
-            NProgress.start();
-        });
-
-        document.addEventListener('livewire:navigating', () => {
-            NProgress.inc();
-        })
-
-        document.addEventListener("livewire:navigated", function() {
-            setTimeout(() => NProgress.done(), 100);
-        });
-    </script>
-    <!-- x-alpineuse -->
-
     <!-- x-use-theme -->
-    <script>
+    {{-- <script>
         if (localStorage.getItem("useTheme") == undefined) {
             localStorage.setItem("useTheme", 'auto');
         }
@@ -141,7 +106,7 @@
                 );
             });
         });
-    </script>
+    </script> --}}
     <!-- x-use-theme -->
 
     {{-- <!-- x-use-hideScrollBar -->

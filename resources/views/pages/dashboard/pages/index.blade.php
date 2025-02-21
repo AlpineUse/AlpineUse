@@ -1,6 +1,6 @@
 <div>
     <!-- Head -->
-    <div class="border-0 border-solid text-dark dark:text-light text-start">
+    <div class="border-b border-solid text-dark dark:text-light text-start">
         <h2 class="m-0 text-2xl font-bold leading-8 tracking-tight">
             Dashboard AlpineUse
         </h2>

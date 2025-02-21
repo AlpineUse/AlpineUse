@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable();
 
-            $table->longText('icon');
+            $table->longText('icon')->nullable();
             $table->string('name');
-            $table->string('desc');
+            $table->string('desc')->nullable();
 
             $table->enum('status', ['active', 'non-active'])->default('non-active');
             $table->enum('publish', ['yes', 'no'])->default('no');

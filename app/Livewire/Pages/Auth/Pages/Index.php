@@ -22,6 +22,10 @@ class Index extends Component
             'email' => 'required|email',
         ]);
 
+        if($this->email != 'hi@iammarjamal.me'){
+            return $this->redirect(route('home.index'), navigate: true);
+        }
+
         // RateLimiter
         if (!RateLimiter::attempt('otp-request:' . $this->email, 1, function () {}, 60)) {
             $this->addError('email', 'Too many requests. Please wait 1 minute before trying again.');

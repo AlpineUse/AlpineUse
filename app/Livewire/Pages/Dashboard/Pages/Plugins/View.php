@@ -8,6 +8,8 @@ class View extends Component
 {
     public function render()
     {
-        return view('pages.dashboard.pages.plugins.view');
+        return view('pages.dashboard.pages.plugins.view')
+            ->layout('pages.dashboard.layouts.layout')
+            ->title('Plugin');
     }
 }
