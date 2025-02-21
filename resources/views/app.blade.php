@@ -55,9 +55,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @laravelPWA
     
-    <!-- تحميل السكريبت مسبقاً -->
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/x-use-theme@1.0.9/index.min.js" as="script">
-    <script src="https://cdn.jsdelivr.net/npm/x-use-theme@1.0.9/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/x-use-theme@1.1.1/index.min.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     @livewireStyles

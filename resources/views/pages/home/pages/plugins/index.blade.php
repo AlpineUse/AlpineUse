@@ -75,15 +75,17 @@
                     </div>
                 </li>
             @empty
-            <li class="w-full col-span-full">
-                <div class="flex flex-col items-center justify-center gap-y-2">
-                    <iconify-icon icon="ph:empty" class="text-9xl text-secondary-dark/60 dark:text-secondary-light/60"></iconify-icon>
-                    <h1 class="text-2xl text-secondary-dark/60 dark:text-secondary-light/60">Empty Plugin !</h1>
-                </div>
-            </li>
+                <li class="w-full col-span-full">
+                    <div class="flex flex-col items-center justify-center gap-y-2">
+                        <iconify-icon icon="ph:empty"
+                            class="text-9xl text-secondary-dark/60 dark:text-secondary-light/60"></iconify-icon>
+                        <h1 class="text-2xl text-secondary-dark/60 dark:text-secondary-light/60">Empty Plugin !</h1>
+                    </div>
+                </li>
             @endforelse
 
-            <button @click="useTheme = 'dark'">fasdfasdf</button>
+            <button @click="useTheme = 'light'">light</button>
+            <button @click="useTheme = 'dark'">dark</button>
         </ul>
     </div>
 </div>
