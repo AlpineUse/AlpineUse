@@ -40,7 +40,7 @@ Route::prefix('/auth')->name('auth.')->middleware('guest')->group(function () {
         ->name('logout');
 });
 
-Route::prefix('/admin')->name('admin.')->middleware(['auth', \Spatie\Permission\Middleware\RoleMiddleware::using('admin')])->group(function () {
+Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function () {
     Route::get('/', IndexAdmin::class)->name('index');
 
     Route::prefix('/plugins')->name('plugins.')->group(function () {
