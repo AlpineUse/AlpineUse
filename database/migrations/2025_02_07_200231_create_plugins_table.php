@@ -13,14 +13,11 @@ return new class extends Migration
     {
         Schema::create('plugins', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable();
-
-            $table->longText('icon')->nullable();
             $table->string('name');
             $table->string('desc')->nullable();
+            $table->longText('body')->nullable();
 
             $table->enum('status', ['active', 'non-active'])->default('non-active');
-            $table->enum('publish', ['yes', 'no'])->default('no');
             $table->timestamps();
         });
     }

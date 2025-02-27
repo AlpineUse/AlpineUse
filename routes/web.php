@@ -8,11 +8,6 @@ use App\Livewire\Pages\Auth\Pages\Index as IndexAuth;
 use App\Livewire\Pages\Auth\Pages\Verify as VerifyAuth;
 use App\Livewire\Pages\Auth\Pages\Logout as LogoutAuth;
 
-use App\Livewire\Pages\Dashboard\Pages\Index as IndexDashboard;
-
-use App\Livewire\Pages\Dashboard\Pages\Plugins\Index as IndexDashboardPlugins;
-use App\Livewire\Pages\Dashboard\Pages\Plugins\View as ViewDashboardPlugins;
-
 use App\Livewire\Pages\Admin\Pages\Index as IndexAdmin;
 
 use App\Livewire\Pages\Admin\Pages\Plugins\Index as IndexAdminPlugins;
@@ -43,15 +38,6 @@ Route::prefix('/auth')->name('auth.')->middleware('guest')->group(function () {
         ->withoutMiddleware(['guest'])
         ->middleware(['auth'])
         ->name('logout');
-});
-
-Route::prefix('/dashboard')->name('dashboard.')->middleware(['auth', \Spatie\Permission\Middleware\RoleMiddleware::using('user')])->group(function () {
-    Route::get('/', IndexDashboard::class)->name('index');
-
-    Route::prefix('/plugins')->name('plugins.')->group(function () {
-        Route::get('/', IndexDashboardPlugins::class)->name('index');
-        Route::get('/{id}', ViewDashboardPlugins::class)->name('view');
-    });
 });
 
 Route::prefix('/admin')->name('admin.')->middleware(['auth', \Spatie\Permission\Middleware\RoleMiddleware::using('admin')])->group(function () {

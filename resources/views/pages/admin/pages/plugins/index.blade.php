@@ -64,10 +64,10 @@
                         <tr
                             class="duration-150 ease-in-out border-t-0 border-b border-solid text-secondary-dark dark:text-secondary-light border-x-0 border-zinc-200">
                             <td class="p-2 align-middle">
-                                {{ $item->title }}
+                                {{ $item->name }}
                             </td>
                             <td class="p-2 align-middle">
-                                <a href="{{ route('home.docs.index', ['url' => $item->url]) }}" target="_blank">
+                                <a href="{{ route('home.docs.index', ['url' => $item->name]) }}" target="_blank">
                                     <iconify-icon icon="solar:link-bold"
                                         class="text-xl text-dark dark:text-light"></iconify-icon>
                                 </a>

@@ -2,22 +2,16 @@
 <html class="scroll-smooth" x-use-theme>
 
 <head>
-    <!-- Base Meta -->
-    @if (!empty($title))
-        <title>{{ env('APP_NAME') }} - {{ $title }}</title>
-        <meta name="description" content="{{ !empty($desc) ? $desc : '' }}" />
+    <!-- Meta -->
+    <title>{{ env('APP_NAME') }} - {{ $title }}</title>
+    <meta name="description" content="{{ !empty($desc) ? $desc : '' }}" />
 
-        <meta property="og:site_name" content="{{ $title }}" />
-        <meta property="og:title" content="{{ $title }}" />
-        <meta property="og:description" content="{{ !empty($desc) ? $desc : '' }}" />
+    <meta property="og:site_name" content="{{ $title }}" />
+    <meta property="og:title" content="{{ $title }}" />
+    <meta property="og:description" content="{{ !empty($desc) ? $desc : '' }}" />
 
-        <meta property="twitter:title" content="{{ $title }}" />
-        <meta property="twitter:description" content="{{ !empty($desc) ? $desc : '' }}" />
-    @else
-        @inertiaHead
-        @routes
-    @endif
-
+    <meta property="twitter:title" content="{{ $title }}" />
+    <meta property="twitter:description" content="{{ !empty($desc) ? $desc : '' }}" />
     <meta property="og:image" content="{{ env('APP_URL') }}/assets/images/icons/icon.webp" />
     <meta property="og:type" content="website" />
     <meta property="twitter:image" content="{{ env('APP_URL') }}/assets/images/icons/icon.webp" />
@@ -53,91 +47,89 @@
 
     <!-- Assets -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @laravelPWA
-    
-    <script src="https://cdn.jsdelivr.net/npm/x-use-theme@1.1.1/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpineuse@latest/use-theme/index.min.js"></script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     @livewireStyles
-
     @livewireScripts
     <!-- Assets -->
 
-    <!-- x-use-theme -->
-    {{-- <script>
-        if (localStorage.getItem("useTheme") == undefined) {
-            localStorage.setItem("useTheme", 'auto');
-        }
-        if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-            if (localStorage.getItem("useTheme") == "auto" || localStorage.getItem("useTheme") == "dark") {
-                document.documentElement.classList.add("dark");
-            } else {
-                document.documentElement.classList.add("light");
-            }
-        } else {
-            if (localStorage.getItem("useTheme") == "auto" || localStorage.getItem("useTheme") == "light") {
-                document.documentElement.classList.add("light");
-            } else {
-                document.documentElement.classList.add("dark");
-            }
-        }
-
-        document.addEventListener("StartAlpineUse", () => {
-            document.querySelectorAll("[x-use-theme]").forEach((el) => {
-                el.setAttribute('x-data', '{ useTheme: localStorage.getItem("useTheme") }');
-                el.setAttribute(
-                    "x-init",
-                    `
-                        $watch('useTheme', (val) => { localStorage.setItem("useTheme", val); });
-        
-                        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-                        mediaQuery.addEventListener('change', (e) => { 
-                            if(useTheme === 'auto'){ 
-                                document.documentElement.classList.toggle('dark', e.matches); 
-                                } 
-                            }
-                        );
-                        `
-                );
-                el.setAttribute("x-bind:class",
-                    `{ dark: useTheme === 'dark' || (useTheme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) }`
-                );
-            });
-        });
-    </script> --}}
-    <!-- x-use-theme -->
-
-    {{-- <!-- x-use-hideScrollBar -->
+    <!-- x-use-pwa -->
     <script>
-        document.addEventListener("alpine:init", () => {
-            const styleUseHideScrollbar = document.createElement("style");
-            styleUseHideScrollbar.textContent = `
-                .usehideScrollbar {
-                    -ms-overflow-style: none;
-                    scrollbar-width: none;
-                }
-                .usehideScrollbar::-webkit-scrollbar {
-                    display: none;
-                }
-            `;
-            document.head.appendChild(styleUseHideScrollbar);
+        (function() {
+            const htmlTag = document.documentElement;
+            if (!htmlTag.hasAttribute("x-use-pwa")) return;
 
-            Alpine.directive("use-hidescrollbar", (el, {
-                expression
-            }) => {
-                // استخدام expression من الحجة مباشرة دون إعادة تعريفه
-                const shouldHideScrollbar = expression === undefined || expression === "" || expression
-                    .toLowerCase() === "true" ? true : false;
+            const head = document.head;
 
-                if (shouldHideScrollbar) {
-                    el.classList.add("usehideScrollbar");
-                } else {
-                    el.classList.remove("usehideScrollbar");
+            try {
+                // استخراج البيانات من السمة x-use-pwa وتحويلها إلى JSON
+                const pwaData = JSON.parse(htmlTag.getAttribute("x-use-pwa"));
+
+                if (!Array.isArray(pwaData)) throw new Error("Invalid PWA data format");
+
+                // إضافة عناصر الميتا
+                pwaData.forEach(attrs => {
+                    const meta = document.createElement("meta");
+                    Object.keys(attrs).forEach(key => meta.setAttribute(key, attrs[key]));
+                    head.appendChild(meta);
+                });
+
+                // استخراج بيانات manifest من x-use-pwa
+                const manifestData = pwaData.find(item => item.rel === "manifest");
+
+                if (manifestData) {
+                    const manifest = {
+                        name: manifestData.name || "Default Name",
+                        short_name: manifestData.short_name || "Default Short Name",
+                        description: manifestData.description || "A progressive web app example",
+                        start_url: manifestData.start_url || "/",
+                        display: manifestData.display || "standalone",
+                        background_color: manifestData.background_color || "#ffffff",
+                        theme_color: manifestData.theme_color || "#000000",
+                        icons: manifestData.icons || [{
+                            src: "/assets/images/icons/icon.webp",
+                            sizes: "512x512",
+                            type: "image/webp"
+                        }]
+                    };
+
+                    // تحويل الـ manifest إلى JSON
+                    const manifestBlob = new Blob([JSON.stringify(manifest)], {
+                        type: 'application/json'
+                    });
+                    const manifestURL = URL.createObjectURL(manifestBlob);
+
+                    const link = document.createElement("link");
+                    link.rel = "manifest";
+                    link.href = manifestURL;
+                    head.appendChild(link);
+
+                    console.log("Manifest injected successfully");
                 }
-            });
-        });
+
+                // إضافة الروابط الثابتة مثل الأيقونات
+                pwaData.filter(item => item.rel && item.rel !== "manifest").forEach(attrs => {
+                    const linkElement = document.createElement("link");
+                    Object.keys(attrs).forEach(key => linkElement.setAttribute(key, attrs[key]));
+                    head.appendChild(linkElement);
+                });
+
+                console.log("PWA meta tags and links injected successfully");
+            } catch (error) {
+                console.error("Error parsing x-use-pwa data:", error);
+            }
+
+            // تسجيل الـ Service Worker
+            if ("serviceWorker" in navigator) {
+                navigator.serviceWorker.register("/serviceworker.js", {
+                        scope: "."
+                    })
+                    .then(reg => console.log("Laravel PWA: ServiceWorker registered with scope:", reg.scope))
+                    .catch(err => console.log("Laravel PWA: ServiceWorker registration failed:", err));
+            }
+        })();
     </script>
-    <!-- x-use-hideScrollBar --> --}}
+    <!-- x-use-pwa -->
 
     {{-- <!-- x-use-protectrightclick -->
     <script>
@@ -156,230 +148,6 @@
         });
     </script>
     <!-- x-use-protectrightclick --> --}}
-
-    <!-- x-use-longpress -->
-    <script>
-        document.addEventListener("alpine:init", () => {
-            Alpine.directive("use-longpress", (el, {
-                value,
-                expression
-            }, {
-                evaluateLater,
-                cleanup
-            }) => {
-                const duration = value || 500;
-                let timeout;
-                const evaluate = evaluateLater(expression);
-
-                const StyleUseLongpress = document.createElement("style");
-                StyleUseLongpress.textContent = `
-                                .useLongpress, .useLongpress * {
-                                    margin: 0;
-                                    padding: 0;
-                                    -webkit-tap-highlight-color: transparent !important;
-                                    user-select: none !important;
-                                    -webkit-user-select: none !important;
-                                    -moz-user-select: none !important;
-                                    -ms-user-select: none !important;
-                                    -o-user-select: none !important;
-                                    -webkit-user-drag: none !important;
-                                    -webkit-overflow-scrolling: touch;
-                                    scroll-behavior: smooth;
-                                }
-                            `;
-                document.head.appendChild(StyleUseLongpress);
-                el.classList.add("useLongpress");
-
-                const startPress = () => {
-                    timeout = setTimeout(() => {
-                        evaluate();
-                    }, duration);
-
-                    el.addEventListener("contextmenu", (event) => {
-                        event.preventDefault();
-                    });
-                };
-
-                const cancelPress = () => {
-                    clearTimeout(timeout);
-                    el.addEventListener("contextmenu", (event) => {
-                        event.preventDefault();
-                    });
-                };
-
-                el.addEventListener("contextmenu", (event) => {
-                    event.preventDefault();
-                });
-
-                el.addEventListener("mousedown", startPress);
-                el.addEventListener("touchstart", startPress);
-                el.addEventListener("mouseup", cancelPress);
-                el.addEventListener("mouseleave", cancelPress);
-                el.addEventListener("touchend", cancelPress);
-                el.addEventListener("touchcancel", cancelPress);
-
-                cleanup(() => {
-                    el.removeEventListener("contextmenu", (event) => event.preventDefault());
-                    el.removeEventListener("mousedown", startPress);
-                    el.removeEventListener("touchstart", startPress);
-                    el.removeEventListener("mouseup", cancelPress);
-                    el.removeEventListener("mouseleave", cancelPress);
-                    el.removeEventListener("touchend", cancelPress);
-                    el.removeEventListener("touchcancel", cancelPress);
-                });
-            });
-        });
-    </script>
-
-    <!-- x-use-longpress -->
-
-    <!-- x-use-dbclick -->
-    <script>
-        document.addEventListener("alpine:init", () => {
-            Alpine.directive("use-dbclick", (el, {
-                expression
-            }, {
-                evaluateLater,
-                cleanup
-            }) => {
-                const evaluate = evaluateLater(expression); // إعداد تنفيذ التعبير
-                let lastClickTime = 0; // زمن النقر الأخير
-
-                const StyleUseDbClick = document.createElement("style");
-                StyleUseDbClick.textContent = `
-                                        .useDbClick, .useDbClick * {
-                                            touch-action: manipulation;
-                                            pointer-events: auto;
-                                                touch-action: none;
-                                                -webkit-user-select: none;
-                                                -moz-user-select: none;
-                                                -ms-user-select: none;
-                                                user-select: none;
-                                        }
-                                    `;
-                document.head.appendChild(StyleUseDbClick);
-                el.classList.add("useDbClick");
-
-                // إجراء يتم تنفيذه عند النقر
-                const handleClick = () => {
-                    const currentTime = new Date().getTime();
-                    // تحقق من الفرق بين النقرات
-                    if (currentTime - lastClickTime < 200) {
-                        evaluate(); // تنفيذ التعبير إذا كان الفارق أقل من 200 مللي ثانية
-                    }
-                    lastClickTime = currentTime; // تحديث زمن النقر الأخير
-                };
-
-                el.addEventListener("contextmenu", (event) => {
-                    event.preventDefault();
-                });
-
-                // إضافة مستمع للنقر
-                el.addEventListener("click", handleClick);
-
-                // تنظيف الأحداث عند إزالة العنصر
-                cleanup(() => {
-                    el.removeEventListener("click", handleClick);
-                });
-            });
-        });
-    </script>
-    <!-- x-use-dbclick -->
-
-    <!-- x-use-tbclick -->
-    <script>
-        document.addEventListener("alpine:init", () => {
-            Alpine.directive("use-tbclick", (el, {
-                expression
-            }, {
-                evaluateLater,
-                cleanup
-            }) => {
-                const evaluate = evaluateLater(expression); // إعداد تنفيذ التعبير
-                let clickCount = 0; // عداد النقرات
-                let lastClickTime = 0; // زمن النقر الأخير
-
-                const StyleUseTbClick = document.createElement("style");
-                StyleUseTbClick.textContent = `
-                                        .useTbClick, .useTbClick * {
-                                            touch-action: manipulation;
-                                            pointer-events: auto;
-                                                touch-action: none;
-                                                -webkit-user-select: none;
-                                                -moz-user-select: none;
-                                                -ms-user-select: none;
-                                                user-select: none;
-                                        }
-                                    `;
-                document.head.appendChild(StyleUseTbClick);
-                el.classList.add("useTbClick");
-
-                // إجراء يتم تنفيذه عند النقر
-                const handleClick = () => {
-                    const currentTime = new Date().getTime();
-
-                    // تحقق من الفرق بين النقرات
-                    if (currentTime - lastClickTime < 200) {
-                        clickCount++;
-                        // إذا كانت ثلاث نقرات
-                        if (clickCount === 3) {
-                            evaluate(); // تنفيذ التعبير
-                            clickCount = 0; // إعادة تعيين العداد
-                        }
-                    } else {
-                        clickCount = 1; // إعادة تعيين العداد في حالة تجاوز 200 مللي ثانية
-                    }
-                    lastClickTime = currentTime; // تحديث زمن النقر الأخير
-                };
-
-                el.addEventListener("contextmenu", (event) => {
-                    event.preventDefault();
-                });
-
-                // إضافة مستمع للنقر
-                el.addEventListener("click", handleClick);
-
-                // تنظيف الأحداث عند إزالة العنصر
-                cleanup(() => {
-                    el.removeEventListener("click", handleClick);
-                });
-            });
-        });
-    </script>
-    <!-- x-use-tbclick -->
-
-    <!-- x-use-share -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const isSupport = !!navigator.share;
-            document.querySelectorAll("[x-use-share]").forEach((el) => {
-                el.setAttribute('x-data', `{ isSupport: ${isSupport} }`);
-            });
-        });
-
-        document.addEventListener('alpine:init', () => {
-            Alpine.directive('use-share', (el, {
-                expression
-            }, {
-                evaluate
-            }) => {
-                el.addEventListener('click', async () => {
-                    const shareData = evaluate(expression);
-                    if (navigator.share) {
-                        try {
-                            await navigator.share(shareData);
-                            console.log('Success: useShare');
-                        } catch (err) {
-                            console.error('Failed: useShare', err);
-                        }
-                    } else {
-                        console.error('useShare not supported');
-                    }
-                });
-            });
-        });
-    </script>
-    <!-- x-use-share -->
 
     <!-- x-use-splash -->
     {{-- <script>
@@ -441,68 +209,10 @@
         });
     </script> --}}
     <!-- x-use-splash -->
-
-    <!-- Archive -->
-    {{-- <script>
-            document.addEventListener('alpine:init', () => {
-    
-                Alpine.directive('use-shortcut', (el, { expression, modifiers }, { evaluateLater, cleanup }) => {
-                    const evaluate = evaluateLater(expression);
-                    const keys = modifiers; // جميع المفاتيح المعدلة (مثل ctrl, alt, shift)
-                    
-                    const handleKeyPress = (event) => {
-                        const keyPressed = keys[0]; // المفتاح الأساسي (مثل a, b, c)
-    
-                        // تحقق مما إذا كانت المفاتيح المطلوبة مضغوطة
-                        const isCtrlPressed = keys.includes('ctrl') ? event.ctrlKey : true;
-                        const isAltPressed = keys.includes('alt') ? event.altKey : true;
-                        const isShiftPressed = keys.includes('shift') ? event.shiftKey : true;
-    
-                        if (isCtrlPressed && isAltPressed && isShiftPressed && event.key === keyPressed) {
-                            evaluate();
-                        }
-                    };
-    
-                    // الاستماع إلى حدث keydown على مستوى النافذة
-                    window.addEventListener('keydown', handleKeyPress);
-    
-                    // تنظيف عند إزالة العنصر
-                    cleanup(() => {
-                        window.removeEventListener('keydown', handleKeyPress);
-                    });
-                });
-    
-            Alpine.directive('use-key', (el, { expression, modifiers }, { evaluateLater, cleanup }) => {
-                    const evaluate = evaluateLater(expression);
-                    const key = modifiers[0]; // التقاط المفتاح الذي تم تحديده كمُعَدِّل (مثل q)
-    
-                    const handleKeyPress = (event) => {
-                        if (event.key === key) {
-                            evaluate();
-                        }
-                    };
-    
-                    // الاستماع إلى حدث keydown على مستوى النافذة
-                    window.addEventListener('keydown', handleKeyPress);
-    
-                    // تنظيف عند إزالة العنصر
-                    cleanup(() => {
-                        window.removeEventListener('keydown', handleKeyPress);
-                    });
-                });
-            });
-        </script> --}}
-    <!-- Archive -->
-    <!-- AlpineUse -->
 </head>
 
-<body class="transition duration-500 ease-out bg-light dark:bg-dark">
-    @if (!empty($title))
-        @yield('slot')
-    @else
-        <!-- OR -->
-        @inertia
-    @endif
+<body class="transition duration-500 ease-in-out bg-light dark:bg-dark">
+    @yield('slot')
 
     <NoScript>
         <div class="fixed top-16 ltr:left-0 rtl:right-0 z-[1000] w-full h-full">

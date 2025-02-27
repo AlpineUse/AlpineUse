@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['general', 'plugin'])->default('general');
             $table->foreignId('plugin_id')->nullable();
 
             $table->string('title')->nullable();

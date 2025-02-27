@@ -43,9 +43,57 @@
         </div>
     </header>
 
-    <main class="duration-500">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            sessionStorage.setItem('back_path', getPathFromUrl(window.location.href));
+        });
+        function getPathFromUrl(url) {
+            try {
+                return new URL(url).pathname;
+            } catch (error) {
+                console.error('Invalid URL:', url);
+                return '/';
+            }
+        }
+        function getPathWithoutLastSegment(path) {
+            const segments = path.replace(/\/+$/, '').split('/');
+            if (segments.length > 2) {
+                return '/' + segments.slice(1, -1).join('/');
+            }
+            return path;
+        }
+    </script>
+
+    <main class="max-w-5xl mx-auto px-2" x-data="{ pageIn: false, pageOut: false }" x-init="
+    // =-> خروج الصفحة
+    document.addEventListener('livewire:navigate', (event) => {
+        sessionStorage.setItem('back_path', getPathFromUrl(window.location.href));
+        sessionStorage.setItem('next_path', getPathFromUrl(event.detail.url.href));
+    
+        const backPath = sessionStorage.getItem('back_path') || '/';
+        const nextPath = sessionStorage.getItem('next_path') || '/';
+    
+        console.log('out-page', nextPath, backPath);
+        (nextPath === backPath || getPathWithoutLastSegment(nextPath) === getPathWithoutLastSegment(backPath)) ? pageOut = false: pageOut = true;
+        console.log('out-page', pageOut);
+    });
+    
+    // =-> دخول الصفحة
+    document.addEventListener('livewire:navigated', () => {
+        sessionStorage.setItem('current_path', getPathFromUrl(window.location.href));
+    
+        const currentPath = sessionStorage.getItem('current_path') || '/';
+        const backPath = sessionStorage.getItem('back_path') || '/';
+    
+        console.log('in-page', currentPath, backPath);
+        (currentPath === backPath || getPathWithoutLastSegment(currentPath) === getPathWithoutLastSegment(backPath)) ? pageIn = false: pageIn = true;
+        console.log('in-page', pageIn);
+    });"
+        :class="{ 'xyz-in': pageIn, 'xyz-out': pageOut }" xyz="fade">
+
         {{ $slot }}
     </main>
+
 
     <footer class="duration-500 border-t bg-light dark:bg-dark border-secondary-light/50 dark:border-secondary-dark/50">
         <div class="flex items-center justify-center h-16 max-w-screen-xl px-4 mx-auto">

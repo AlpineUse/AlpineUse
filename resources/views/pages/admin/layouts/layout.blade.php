@@ -8,7 +8,9 @@
             <!-- Header -->
 
             <!-- Body -->
-            <div class="w-full h-full mx-2 mt-1 animate__animated animate__fadeIn animate__faster xs:p-2 md:p-6">
+            <div class="w-full h-full mx-2 mt-1 xs:p-2 md:p-6" x-data="{ show: true }"
+                x-init="document.addEventListener('livewire:navigate', ()=> { show = false });" :class="show ? 'xyz-in' : 'xyz-out'"
+                xyz="fade">
                 {{ $slot }}
             </div>
             <!-- Body -->

@@ -53,8 +53,7 @@ class Verify extends Component
         $userDB = User::firstOrCreate(
             ['email' => $this->email],
             [
-                'name' => explode('@', $this->email)[0],
-                'password' => Hash::make(Str::random(12)),
+                'name' => explode('@', $this->email)[0]
             ]
         );
 
@@ -67,7 +66,7 @@ class Verify extends Component
         Auth::login($userDB);
 
         // Return to Dashboard Page
-        return $this->redirect(route('dashboard.index'), navigate: true);
+        return $this->redirect(route('admin.index'), navigate: true);
     }
 
     public function mount($email)

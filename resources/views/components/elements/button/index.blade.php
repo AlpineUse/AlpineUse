@@ -17,8 +17,8 @@
 
 <button
     {{ $attributes->class([
-        'w-full transition-all duration-500',
-        'bg-primary-light dark:bg-primary-dark text-primary-foreground-light dark:text-primary-foreground-dark hover:bg-primary-light hover:opacity-70 dark:hover:bg-primary-dark dark:hover:opacity-70' => $primary,
+        'w-full transition-all duration-500 cursor-pointer',
+        'bg-primary-light dark:bg-primary-dark text-primary hover:bg-primary-light hover:opacity-70 dark:hover:bg-primary-dark dark:hover:opacity-70' => $primary,
         'bg-secondary-light dark:bg-secondary-dark text-secondary-foreground-light dark:text-secondary-foreground-dark hover:bg-secondary-light hover:opacity-70 dark:hover:bg-secondary-dark dark:hover:opacity-70' => $secondary,
         'bg-success-light dark:bg-success-dark text-success-foreground-light dark:text-success-foreground-dark hover:bg-success-light hover:opacity-70 dark:hover:bg-success-dark dark:hover:opacity-70' => $success,
         'bg-warning-light dark:bg-warning-dark text-warning-foreground-light dark:text-warning-foreground-dark hover:bg-warning-light hover:opacity-70 dark:hover:bg-warning-dark dark:hover:opacity-70' => $warning,
