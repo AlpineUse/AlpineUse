@@ -57,11 +57,6 @@ class Verify extends Component
             ]
         );
 
-        // Assing Role User
-        if ($userDB->wasRecentlyCreated) {
-            $userDB->assignRole('user');
-        }
-
         // Login
         Auth::login($userDB);
 
