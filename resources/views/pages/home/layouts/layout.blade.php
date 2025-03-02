@@ -20,21 +20,12 @@
                                 <iconify-icon icon="mdi:github" class="text-3xl text-dark dark:text-light"></iconify-icon>
                             </a>
                         </li>
-                        {{-- @if (Auth::Check())
-                            <li>
-                                <a href="{{ route('dashboard.index') }}" wire:navigate>
-                                    <iconify-icon icon="material-symbols:dashboard"
-                                        class="text-3xl text-dark dark:text-light"></iconify-icon>
-                                </a>
-                            </li>
-                        @else
-                            <li>
-                                <a href="{{ route('auth.index') }}" wire:navigate>
-                                    <iconify-icon icon="material-symbols:login"
-                                        class="text-3xl text-dark dark:text-light"></iconify-icon>
-                                </a>
-                            </li>
-                        @endif --}}
+                        <li>
+                            <a href="https://x.com/AlpineUseOrg" target="_blank">
+                                <iconify-icon icon="prime:twitter"
+                                    class="text-2xl text-dark dark:text-light"></iconify-icon>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -47,6 +38,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             sessionStorage.setItem('back_path', getPathFromUrl(window.location.href));
         });
+
         function getPathFromUrl(url) {
             try {
                 return new URL(url).pathname;
@@ -55,6 +47,7 @@
                 return '/';
             }
         }
+
         function getPathWithoutLastSegment(path) {
             const segments = path.replace(/\/+$/, '').split('/');
             if (segments.length > 2) {
@@ -64,8 +57,7 @@
         }
     </script>
 
-    <main class="max-w-5xl mx-auto px-2" x-data="{ pageIn: false, pageOut: false }" x-init="
-    // =-> خروج الصفحة
+    <main class="max-w-5xl mx-auto px-2" x-data="{ pageIn: false, pageOut: false }" x-init="// =-> خروج الصفحة
     document.addEventListener('livewire:navigate', (event) => {
         sessionStorage.setItem('back_path', getPathFromUrl(window.location.href));
         sessionStorage.setItem('next_path', getPathFromUrl(event.detail.url.href));
