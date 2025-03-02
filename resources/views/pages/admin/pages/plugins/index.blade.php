@@ -67,7 +67,7 @@
                                 {{ $item->name }}
                             </td>
                             <td class="p-2 align-middle">
-                                <a href="{{ route('home.docs.index', ['url' => $item->name]) }}" target="_blank">
+                                <a href="{{ route('home.docs.plugins', ['url' => $item->url]) }}" target="_blank">
                                     <iconify-icon icon="solar:link-bold"
                                         class="text-xl text-dark dark:text-light"></iconify-icon>
                                 </a>
@@ -86,7 +86,7 @@
                                 </button>
                             </td>
                             <td class="p-2 align-middle">
-                                <a href="{{ route('home.docs.plugins', ['url' => $item->url]) }}" wire:navigate>
+                                <a href="{{ route('admin.plugins.view', ['id' => $item->id]) }}" wire:navigate>
                                     <iconify-icon icon="tabler:edit"
                                         class="text-xl text-dark dark:text-light"></iconify-icon>
                                 </a>
