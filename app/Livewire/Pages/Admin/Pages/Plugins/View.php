@@ -12,6 +12,7 @@ class View extends Component
     public $id;
 
     public $name;
+    public $desc;
     public $url;
     public $body;
 
@@ -28,7 +29,8 @@ class View extends Component
     {
         $this->id = $id;
         $plugin = Plugin::find($this->id);
-        $this->title = $plugin->title;
+        $this->name = $plugin->name;
+        $this->desc = $plugin->desc;
         $this->url = $plugin->url;
         $this->body = $plugin->body;
     }

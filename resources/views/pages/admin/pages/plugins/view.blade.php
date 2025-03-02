@@ -4,6 +4,9 @@
             <x-elements.input label="Name" wire:model="name" />
         </div>
         <div>
+            <x-elements.input label="Desc" wire:model="desc" />
+        </div>
+        <div>
             <x-elements.input label="URL" wire:model="url" />
         </div>
         <div wire:ignore>
@@ -15,7 +18,7 @@
     </div>
 
     @assets
-    <!-- تحميل Editor.js وأدواته اللازمة -->
+        <!-- تحميل Editor.js وأدواته اللازمة -->
 
         <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
         <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
