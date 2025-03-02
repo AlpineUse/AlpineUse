@@ -39,7 +39,7 @@
             const editor = new EditorJS({
                 holder: 'editorjs',
                 autofocus: true,
-                data: {!! !empty($body) ? '`'.$body.'`' : '{}' !!},
+                data: JSON.parse(@json($body)),
                 tools: {
                     header: {
                         class: window.Header,
