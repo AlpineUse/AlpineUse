@@ -12,7 +12,7 @@ class Plugin extends Model
         'name',
         'desc',
         'body',
-
+        'url',
         'status'
     ];
 }
