@@ -36,7 +36,7 @@ class Index extends Component
 
     public function render()
     {
-        $Docs = Document::whereNull('plugin_id')->get();
+        $Docs = Document::all();
 
         return view('pages.admin.pages.docs.index', ['Docs' => $Docs])
             ->layout('pages.admin.layouts.layout')

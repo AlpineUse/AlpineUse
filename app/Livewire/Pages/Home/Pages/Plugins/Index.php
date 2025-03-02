@@ -11,7 +11,7 @@ class Index extends Component
 
     public function render()
     {
-        $this->plugins = Plugin::where('publish', 'no')->get();
+        $this->plugins = Plugin::where('status', 'active')->get();
 
         return view('pages.home.pages.plugins.index')
             ->layout('pages.home.layouts.layout')

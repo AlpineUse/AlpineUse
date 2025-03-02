@@ -86,7 +86,7 @@
                                 </button>
                             </td>
                             <td class="p-2 align-middle">
-                                <a href="{{ route('admin.docs.view', ['id' => $item->id]) }}" wire:navigate>
+                                <a href="{{ route('admin.plugins.view', ['id' => $item->id]) }}" wire:navigate>
                                     <iconify-icon icon="tabler:edit"
                                         class="text-xl text-dark dark:text-light"></iconify-icon>
                                 </a>

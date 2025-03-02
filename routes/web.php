@@ -1,8 +1,9 @@
 <?php
 
 use App\Livewire\Pages\Home\Pages\Index as IndexHome;
-use App\Livewire\Pages\Home\Pages\Plugins\Index as IndexPlugins;
 use App\Livewire\Pages\Home\Pages\Docs\Index as IndexDocs;
+use App\Livewire\Pages\Home\Pages\Plugins\Index as IndexPlugins;
+use App\Livewire\Pages\Home\Pages\Plugins\View as ViewPlugins;
 
 use App\Livewire\Pages\Auth\Pages\Index as IndexAuth;
 use App\Livewire\Pages\Auth\Pages\Verify as VerifyAuth;
@@ -27,6 +28,7 @@ Route::prefix('/')->name('home.')->group(function () {
 
     Route::prefix('/docs')->name('docs.')->group(function () {
         Route::get('/{url}', IndexDocs::class)->name('index');
+        Route::get('/plugin/{url}', ViewPlugins::class)->name('plugins');
     });
 });
 

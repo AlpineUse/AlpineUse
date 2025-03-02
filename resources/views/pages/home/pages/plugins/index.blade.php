@@ -41,14 +41,12 @@
 
                         <div class="mt-1">
                             <p class="text-sm text-secondary-dark/70 dark:text-secondary-light/70">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has
-                                been the industry's standard dummy text ever since the 1500s
+                                {{ $plugin->desc }}
                             </p>
                         </div>
 
                         <div class="flex flex-row w-full gap-2 mt-3">
-                            <a href="{{ route('home.docs.plugin', ['plugin' => 'name', 'url' => 'introduction']) }}" class="w-full"
+                            <a href="{{ route('home.docs.plugins', ['url' => $plugin->url]) }}" class="w-full"
                                 wire:navigate>
                                 <x-elements.button class="w-full rounded-lg" size="sm" secondary>View
                                     Document</x-elements.button>

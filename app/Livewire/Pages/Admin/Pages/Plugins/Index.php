@@ -2,7 +2,9 @@
 
 namespace App\Livewire\Pages\Admin\Pages\Plugins;
 
+use App\Models\Document;
 use App\Models\Plugin;
+use Illuminate\Support\Str;
 use Livewire\Component;
 
 class Index extends Component
@@ -10,12 +12,12 @@ class Index extends Component
     public function create()
     {
         $id = Plugin::insertGetId([
-            'name' => 'New Plugin',
-            'desc' => 'Description here',
-            "status" => "non-active",
+            'name' => 'New Document',
+            'body' => null,
+            'url' => Str::random(10),
         ]);
 
-        $this->redirect(route('admin.plugins.view', ['id' => $id]));
+        return $this->redirect(route('admin.plugins.view', ['id' => $id]), navigate: true);
     }
 
     public function status($id, $status)
@@ -30,8 +32,7 @@ class Index extends Component
     public function delete($id)
     {
         Plugin::find($id)->delete();
-
-        $this->redirect(route('admin.plugins.index'));
+        return back()->with('success', 'Delete Document Succssefly');
     }
 
     public function render()
