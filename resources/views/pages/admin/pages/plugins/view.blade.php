@@ -42,7 +42,7 @@
             const editor = new EditorJS({
                 holder: 'editorjs',
                 autofocus: true,
-                data: {!! !empty($body) ? $body : '{}' !!},
+                data: {!! !empty($body) ? '`'.$body.'`' : '{}' !!},
                 tools: {
                     header: {
                         class: window.Header,

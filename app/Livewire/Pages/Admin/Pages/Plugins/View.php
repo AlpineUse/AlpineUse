@@ -20,6 +20,7 @@ class View extends Component
     {
         Plugin::find($this->id)->update([
             'name' => $this->name,
+            'desc' => $this->desc,
             'url' => $this->url,
             'body' => $this->body
         ]);
