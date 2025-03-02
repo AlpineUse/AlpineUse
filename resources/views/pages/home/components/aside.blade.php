@@ -25,7 +25,7 @@
                     </li>
                     <div class="mb-2 flex flex-col gap-y-2" x-show="show">
                         @foreach ($plugins as $plugin)
-                            <a href="{{ route('home.docs.plugins', [ 'url' => $plugin->url ]) }}" class="cursor-pointer">
+                            <a href="{{ route('home.docs.plugins', [ 'url' => $plugin->url ]) }}" class="cursor-pointer" wire:navigate>
                                 <li class="flex text-sm items-center flex-row mx-6 gap-x-2">
                                     - <iconify-icon icon="la:star-of-life"
                                         class="text-2xl text-dark dark:text-light ms-2 rotate-45"></iconify-icon>
