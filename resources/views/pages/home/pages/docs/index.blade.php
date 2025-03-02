@@ -6,8 +6,8 @@
 
         <div class="flex flex-col w-full min-h-screen mx-4 my-4 prose text-start text-dark dark:text-light dark:prose-invert"
             x-data="{ show: true }" x-init="document.addEventListener('livewire:navigate', () => { show = false });" :class="show ? 'xyz-in' : 'xyz-out'" xyz="fade">
-            @php
-                $content = json_decode($document->body, true);
+                        @php
+                $content = json_decode($plugin->body, true);
                 $htmlContent = '';
 
                 foreach ($content['blocks'] as $block) {
@@ -21,7 +21,14 @@
                             e($block['data']['level']) .
                             '>';
                     } elseif ($block['type'] == 'paragraph') {
-                        $htmlContent .= '<p>' . e($block['data']['text']) . '</p>';
+                        // Add the email link to the paragraph block
+                        $text = e($block['data']['text']);
+                        $text = str_replace(
+                            'contribution@alpineuse.org',
+                            '<a href="mailto:contribution@alpineuse.org">contribution@alpineuse.org</a>',
+                            $text,
+                        );
+                        $htmlContent .= '<p>' . $text . '</p>';
                     } elseif ($block['type'] == 'code') {
                         $htmlContent .= '<pre><code>' . e($block['data']['code']) . '</code></pre>';
                     }
@@ -29,7 +36,6 @@
 
                 print $htmlContent;
             @endphp
-
         </div>
     </div>
 </div>

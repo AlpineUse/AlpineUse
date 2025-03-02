@@ -21,7 +21,14 @@
                             e($block['data']['level']) .
                             '>';
                     } elseif ($block['type'] == 'paragraph') {
-                        $htmlContent .= '<p>' . e($block['data']['text']) . '</p>';
+                        // Add the email link to the paragraph block
+                        $text = e($block['data']['text']);
+                        $text = str_replace(
+                            'contribution@alpineuse.org',
+                            '<a href="mailto:contribution@alpineuse.org">contribution@alpineuse.org</a>',
+                            $text,
+                        );
+                        $htmlContent .= '<p>' . $text . '</p>';
                     } elseif ($block['type'] == 'code') {
                         $htmlContent .= '<pre><code>' . e($block['data']['code']) . '</code></pre>';
                     }
@@ -29,7 +36,6 @@
 
                 print $htmlContent;
             @endphp
-
         </div>
     </div>
 </div>
