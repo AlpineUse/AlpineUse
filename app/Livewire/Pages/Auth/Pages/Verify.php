@@ -58,7 +58,7 @@ class Verify extends Component
         );
 
         // Login
-        Auth::login($userDB);
+        Auth::login($userDB, true);
 
         // Return to Dashboard Page
         return $this->redirect(route('admin.index'), navigate: true);
