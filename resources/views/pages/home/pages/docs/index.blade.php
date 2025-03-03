@@ -1,6 +1,6 @@
 <div>
     <div class="flex flex-col lg:flex-row w-full">
-        <div class="flex flex-col h-full w-64 min-h-screen">
+        <div class="lg:w-64">
             <livewire:pages.home.components.aside />
         </div>
 
