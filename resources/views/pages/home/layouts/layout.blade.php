@@ -65,9 +65,7 @@
         const backPath = sessionStorage.getItem('back_path') || '/';
         const nextPath = sessionStorage.getItem('next_path') || '/';
     
-        console.log('out-page', nextPath, backPath);
         (nextPath === backPath || getPathWithoutLastSegment(nextPath) === getPathWithoutLastSegment(backPath)) ? pageOut = false: pageOut = true;
-        console.log('out-page', pageOut);
     });
     
     // =-> دخول الصفحة
@@ -77,9 +75,7 @@
         const currentPath = sessionStorage.getItem('current_path') || '/';
         const backPath = sessionStorage.getItem('back_path') || '/';
     
-        console.log('in-page', currentPath, backPath);
         (currentPath === backPath || getPathWithoutLastSegment(currentPath) === getPathWithoutLastSegment(backPath)) ? pageIn = false: pageIn = true;
-        console.log('in-page', pageIn);
     });"
         :class="{ 'xyz-in': pageIn, 'xyz-out': pageOut }" xyz="fade">
 

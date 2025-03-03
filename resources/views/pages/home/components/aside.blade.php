@@ -1,6 +1,6 @@
 <div>
-    <aside wire:ignore.self
-        class="relative flex flex-col w-full min-h-screen px-4 pt-6 pb-4 leading-6 border-e border-secondary-light/50 dark:border-secondary-dark/50 gap-x-4 lg:sticky lg:top-16 lg:flex lg:basis-72 basis-full">
+    <aside
+        class="relative flex flex-col w-full lg:min-h-screen lg:px-4 px-2 pt-6 pb-4 leading-6 lg:border-e border-secondary-light/50 dark:border-secondary-dark/50 gap-x-4 lg:sticky lg:top-16 lg:flex lg:basis-72 basis-full">
         <div>
             <ul class="flex flex-col gap-y-3 text-dark dark:text-white">
                 @foreach ($documents as $document)
@@ -25,7 +25,8 @@
                     </li>
                     <div class="mb-2 flex flex-col gap-y-2" x-show="show">
                         @foreach ($plugins as $plugin)
-                            <a href="{{ route('home.docs.plugins', [ 'url' => $plugin->url ]) }}" class="cursor-pointer" wire:navigate>
+                            <a href="{{ route('home.docs.plugins', ['url' => $plugin->url]) }}" class="cursor-pointer"
+                                wire:navigate>
                                 <li class="flex text-sm items-center flex-row mx-6 gap-x-2">
                                     - <iconify-icon icon="la:star-of-life"
                                         class="text-2xl text-dark dark:text-light ms-2 rotate-45"></iconify-icon>

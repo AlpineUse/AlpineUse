@@ -1,5 +1,5 @@
 <div>
-    <div class="flex flex-row w-full">
+    <div class="flex flex-col lg:flex-row w-full">
         <div>
             <livewire:pages.home.components.aside />
         </div>

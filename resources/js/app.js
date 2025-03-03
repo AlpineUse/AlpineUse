@@ -6,6 +6,7 @@ import "@animxyz/core";
 // Nprogress with livewire
 import "nprogress/nprogress.css";
 import NProgress from "nprogress";
+NProgress.configure({ showSpinner: false });
 document.addEventListener("livewire:navigate", () => {
     NProgress.start();
 });
