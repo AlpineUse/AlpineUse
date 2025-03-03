@@ -1,8 +1,9 @@
 <div>
     <div class="flex flex-col lg:flex-row w-full">
-        <div>
+        <div class="flex flex-col h-full w-64 min-h-screen">
             <livewire:pages.home.components.aside />
         </div>
+
 
         <div class="flex flex-col w-full min-h-screen px-2 my-4 prose text-start text-dark dark:text-light dark:prose-invert"
             x-data="{ show: true }" x-init="document.addEventListener('livewire:navigate', () => { show = false });" :class="show ? 'xyz-in' : 'xyz-out'" xyz="fade">
