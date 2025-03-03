@@ -24,5 +24,9 @@
                 <x-elements.button class="w-full rounded-lg" size="sm" secondary>Learn More</x-elements.button>
             </a>
         </div>
+        <div>
+            <a @click="useTheme = 'dark'">dark mode</a>
+            <a @click="useTheme = 'light'">light mode</a>
+        </div>
     </div>
 </div>
