@@ -1,6 +1,6 @@
 <div>
     <aside
-        class="relative flex flex-col w-full lg:min-h-screen lg:px-4 px-2 pt-6 pb-4 leading-6 lg:border-e border-secondary-light/50 dark:border-secondary-dark/50 gap-x-4 lg:sticky lg:top-16 lg:flex lg:basis-72 basis-full">
+        class="relative flex flex-col w-full lg:min-h-screen lg:px-4 pt-6 pb-4 leading-6 lg:border-e border-secondary-light/50 dark:border-secondary-dark/50 gap-x-4 lg:sticky lg:top-16 lg:flex lg:basis-72 basis-full">
         <div>
             <ul class="flex flex-col gap-y-3 text-dark dark:text-white">
                 @foreach ($documents as $document)
