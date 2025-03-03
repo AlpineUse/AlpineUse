@@ -8,7 +8,9 @@
     "dependencies": {
         "@animxyz/core": "^0.6.6",
         "@fontsource/ibm-plex-sans-arabic": "^5.1.1",
-        "iconify-icon": "^2.3.0"
+        "alpineuse": "^1.0.20",
+        "iconify-icon": "^2.3.0",
+        "nprogress": "^0.2.0"
     },
     "devDependencies": {
         "@tailwindcss/typography": "^0.5.16",

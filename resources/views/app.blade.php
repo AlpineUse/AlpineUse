@@ -47,24 +47,6 @@
 
     <!-- Assets -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-    <!-- AlpineUse -->
-    <script src="https://cdn.jsdelivr.net/npm/alpineuse@1.0.19/use-theme/index.min.js"></script>
-    <!-- AlpineUse -->
-
-    <!-- NProgress -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
-    <script>
-        document.addEventListener("livewire:navigate", () => {
-            NProgress.start();
-        });
-        document.addEventListener("livewire:navigated", () => {
-            NProgress.done();
-        });
-    </script>
-    <!-- NProgress -->
-
     @livewireStyles
     @livewireScripts
     <!-- Assets -->
