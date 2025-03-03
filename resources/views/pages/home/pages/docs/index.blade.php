@@ -4,7 +4,7 @@
             <livewire:pages.home.components.aside />
         </div>
 
-        <div class="flex flex-col w-auto min-h-screen px-2 my-4 prose text-start text-dark dark:text-light dark:prose-invert"
+        <div class="flex flex-col w-full min-h-screen px-4 my-4 prose lg:border-s border-secondary-light/50 dark:border-secondary-dark/50 text-start text-dark dark:text-light dark:prose-invert"
             x-data="{ show: true }" x-init="document.addEventListener('livewire:navigate', () => { show = false });" :class="show ? 'xyz-in' : 'xyz-out'" xyz="fade">
             @php
                 $content = json_decode($document->body, true);
