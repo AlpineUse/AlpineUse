@@ -1,4 +1,4 @@
-import { ThemeManager, loadTheme, useThemeMagic } from "./index.js";
+import useThemePlugin, { ThemeManager, loadTheme } from "./index.js";
 
 // Before we can use the ThemeManager functions, we need to initialize it
 const { applyTheme, getStoredTheme } = ThemeManager();
@@ -11,10 +11,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Alpine.js init
 document.addEventListener("alpine:init", () => {
-  useThemeMagic();
+  useThemePlugin();
 });
 
 // Livewire navigation
 document.addEventListener("livewire:navigated", () => {
-  useThemeMagic();
+  useThemePlugin();
 });
