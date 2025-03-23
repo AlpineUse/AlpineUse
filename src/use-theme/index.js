@@ -5,7 +5,7 @@ const DARK_CLASS = "dark";
 const LIGHT_CLASS = "light";
 const STORAGE_KEY = "useTheme";
 
-// Save theme in localStorage
+// Save theme in localStorage and Check if support storage in browser or not !
 export const themeStorage = (theme) => {
   try {
     if (theme) {
