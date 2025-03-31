@@ -31,13 +31,16 @@ export const ThemeManager = () => {
       validTheme === DARK_CLASS ||
       (validTheme === "auto" && prefersDark.matches);
 
-    document.documentElement.classList.toggle(DARK_CLASS, isDark);
-    document.documentElement.classList.toggle(LIGHT_CLASS, !isDark);
+    // Remove both classes first, then add the appropriate one
+    document.documentElement.classList.remove(DARK_CLASS, LIGHT_CLASS);
+    document.documentElement.classList.add(isDark ? DARK_CLASS : LIGHT_CLASS);
+
     themeStorage(validTheme);
   };
 
   return { applyTheme, getStoredTheme, prefersDark };
 };
+
 
 // Load Theme using [x-use-theme] attribute
 export const loadTheme = () => {
