@@ -28,7 +28,7 @@ export const ThemeManager = () => {
   const applyTheme = (theme) => {
     const validTheme = THEMES.has(theme) ? theme : DEFAULT_THEME;
     const isDark =
-      validTheme === DARK_CLASS && validTheme === "auto" && prefersDark.matches;
+      validTheme === DARK_CLASS || validTheme === "auto" && prefersDark.matches;
 
     document.documentElement.classList.remove(DARK_CLASS, LIGHT_CLASS);
     document.documentElement.classList.add(isDark ? DARK_CLASS : LIGHT_CLASS);
