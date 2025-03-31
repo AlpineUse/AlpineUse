@@ -28,10 +28,8 @@ export const ThemeManager = () => {
   const applyTheme = (theme) => {
     const validTheme = THEMES.has(theme) ? theme : DEFAULT_THEME;
     const isDark =
-      validTheme === DARK_CLASS ||
-      (validTheme === "auto" && prefersDark.matches);
+      validTheme === DARK_CLASS && validTheme === "auto" && prefersDark.matches;
 
-    // Remove both classes first, then add the appropriate one
     document.documentElement.classList.remove(DARK_CLASS, LIGHT_CLASS);
     document.documentElement.classList.add(isDark ? DARK_CLASS : LIGHT_CLASS);
 
@@ -40,7 +38,6 @@ export const ThemeManager = () => {
 
   return { applyTheme, getStoredTheme, prefersDark };
 };
-
 
 // Load Theme using [x-use-theme] attribute
 export const loadTheme = () => {
