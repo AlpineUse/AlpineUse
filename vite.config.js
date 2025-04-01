@@ -6,7 +6,9 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
+        "use-all": resolve(__dirname, "cdn.js"),
         "use-theme": resolve(__dirname, "src/use-theme/cdn.js"),
+        "use-longpress": resolve(__dirname, "src/use-longpress/cdn.js"),
       },
       output: {
         entryFileNames: "[name]/index.min.js",
